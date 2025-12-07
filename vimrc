@@ -1,17 +1,5 @@
-"                           "
-"                           "
-"                           "
-"                           "
-"                           "
-"                           "
-"                           "
-"                           "
-"                           "
-"                           "
-"                           "
+"""""""""""""""""""""""""""""
 " VIM RC FILE CHASE QUIGLEY "
-"                           "
-"                           "
 """""""""""""""""""""""""""""
 set number relativenumber
 syntax on
@@ -26,35 +14,56 @@ filetype on
 set showmode
 set showmatch
 set hlsearch
+set spell
+set textwidth=80
 
-" for when I forget to run vim with sudo privs
+let mapleader="-"
+let maplocalleader="."
+" ...
 cmap w!! w !sudo tee > /dev/null %
 
 inoremap {<CR> {<CR>}<Esc>ko<tab>
-" inoremap ( ()<Esc>ha
-inoremap [ []<Esc>ha
-" inoremap " ""<Esc>ha
-" inoremap ' ''<Esc>ha
 inoremap <S-Tab> <C-d>
-
-" Use tab for trigger completion with characters ahead and navigate
-" NOTE: There's always complete item selected by default, you may want to enable
-" no select by `"suggest.noselect": true` in your configuration file
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config
-inoremap <silent><expr> <TAB>
-      \ coc#pum#visible() ? coc#pum#next(1) :
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-
-function! CheckBackspace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+inoremap jk <esc>
+nnoremap . gt
+nnoremap , gT
+" The following remap is used to open up VIMRC file 
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+" The following remap is used to source the VIMRC file
+nnoremap <leader>sv :source $MYVIMRC<cr>
+" The following remaps are used to place quotes around a word (' or ")
+nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
+nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
+" Quality of life remaps
+nnoremap H 0
+nnoremap L $
+"
 
 
+" Abbreviations within 'i' mode of vim
+iab sh #!/usr/bin/env bash
+
+" Automatic commands ran
+augroup filetype_html
+    autocmd!
+    autocmd BufNewFile,BufRead *.html :normal gg=G
+augroup END
+
+" autocmd Filetype python 
+
+set spelllang=en
+highlight clear SpellBad
+highlight SpellBad term=standout cterm=underline ctermfg=red
+highlight clear SpellCap
+highlight SpellCap term=underline cterm=underline
+highlight clear SpellRare
+highlight SpellRare term=underline cterm=underline
+highlight clear SpellLocal
+highlight SpellLocal term=underline cterm=underline
+
+"-------------------------------------------------------------------------------- 
 "Status Stuff
+"-------------------------------------------------------------------------------- 
 set statusline=
 set statusline+=\ %F\ %M\ %Y\ %R
 set statusline+=%=
@@ -62,7 +71,9 @@ set statusline+=\ ascii:\ %b\ hex:\ 0x%B\ row:\ %l\ col:\ %c\ percent:\ %p%%
 set laststatus=2
 
 
+"-------------------------------------------------------------------------------- 
 "Plugin Stuff
+"-------------------------------------------------------------------------------- 
 call plug#begin()
 
 "Plug 'ervandew/supertab'

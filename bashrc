@@ -1,3 +1,4 @@
+
 if [[ -f .bash_aliases ]]; then
     source .bash_aliases
 fi 
@@ -6,6 +7,7 @@ bandit () {
     ssh bandit$1@bandit.labs.overthewire.org -p 2220 
 }
 
+export bandit
 
 export HISTCONTROL=ignoreboth:erasedups
 export HISTSIZE=1000
@@ -21,12 +23,8 @@ export CLICOLOR=1
 export LSCOLORS=FaDxcxgxbxegedabagacad
 
 #Changing PS1 Value
-#PS1="\[[\e[0;32m\@]\] \[\e[0;35m\]\u@MB\[\e[31m[\w]\]\[\e[34m\]\$ \[\e[m\]"  
-#export PS1
 export PS1='\[\e[38;5;208m\]\u@\h:\w\n>\[\e[0m\] '
 
-#export PS1='\[\e[38;5;208m\u@\h:\w\n>\e[m\]'
-#export PS1='\[\e[1;32m(\d)\e[m:\u@\h?\e[1;36m\w\e[m\]$ '
 PATH="$HOME/bin:$PATH"
 export PYTHONPATH="${PYTHONPATH}:/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages"
 

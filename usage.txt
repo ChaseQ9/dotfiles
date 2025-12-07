@@ -1,0 +1,13 @@
+Usage guide for this dotfiles repository
+================================================================================
+
+- Install this repository onto your local machine
+
+- Once downloaded, run the install.sh script
+
+- Optionally, set a cronjob to run the sync_dotfiles.sh script to sync the
+repository every day at 01:00
+--> crontab -e 
+--> 0 1 * * * <INSTALL_DIR>/sync_dotfiles.sh
+
+

@@ -3,6 +3,7 @@ declare -A conf
 CONFIG_FILE="$PWD/dotfiles.conf"
 OLDIFS="$IFS"
 IFS=","
+# Function below is used to read and populate the configuration array 'conf'
 read-conf () {
   readarray -t lines < "$CONFIG_FILE"
   for line in "${lines[@]}"; do
@@ -13,8 +14,10 @@ read-conf () {
   
 }
 # Here we will need to go through each file and do the following:
-# 1. Create a symlink to this file in the home directory with the notation ln -s $file .$file
+# 1. Create a symlink to this file in the home directory with the notation ln -s $file .$file | done
 # 2. ... 
+# Function below is used to iterate through each dotfile within the 'conf' array
+# This function also takes into consideration the exclude files
 iterate-files () {
   for file in ${conf["FILES"]}; do
     echo "creating a symlink to $file on file ~/.$file"
@@ -23,12 +26,13 @@ iterate-files () {
   done
 }
 
-
+# Entry function, process the main logic loop of the code
 main () {
 
   read-conf
   iterate-files
   echo "${conf["FILES"]}" 
+  cleanup 
 
 }
 

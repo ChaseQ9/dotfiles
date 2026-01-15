@@ -1,33 +1,48 @@
 """""""""""""""""""""""""""""
+"
 " VIM RC FILE CHASE QUIGLEY "
+"
 """""""""""""""""""""""""""""
+
+"--------------------------------------------------------------------------------
+"Plugin Stuff
+"--------------------------------------------------------------------------------
+call plug#begin()
+
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'dense-analysis/ale'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+call plug#end()
+
 set number relativenumber
 syntax on
-set tabstop=4
-set shiftwidth=4
-set expandtab
-set nowrap
+set autoindent
+set backspace=indent,eol,start
+set formatoptions-=t
+set ruler
+set tabstop=8
+set showcmd
+set title
 set wildmode=longest,list,full
 set wildmenu
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
-filetype on
-set showmode
 set showmatch
 set hlsearch
 set spell
 set textwidth=80
+set background=light
 
 let mapleader="-"
 let maplocalleader="."
-" ...
-cmap w!! w !sudo tee > /dev/null %
 
-inoremap {<CR> {<CR>}<Esc>ko<tab>
 inoremap <S-Tab> <C-d>
-inoremap jk <esc>
 nnoremap . gt
 nnoremap , gT
-" The following remap is used to open up VIMRC file 
+nnoremap <CR> :noh<CR><CR>
+
+" The following remap is used to open up VIMRC file
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 " The following remap is used to source the VIMRC file
 nnoremap <leader>sv :source $MYVIMRC<cr>
@@ -37,11 +52,6 @@ nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
 " Quality of life remaps
 nnoremap H 0
 nnoremap L $
-"
-
-
-" Abbreviations within 'i' mode of vim
-iab sh #!/usr/bin/env bash
 
 " Automatic commands ran
 augroup filetype_html
@@ -49,7 +59,6 @@ augroup filetype_html
     autocmd BufNewFile,BufRead *.html :normal gg=G
 augroup END
 
-" autocmd Filetype python 
 
 set spelllang=en
 highlight clear SpellBad
@@ -60,33 +69,22 @@ highlight clear SpellRare
 highlight SpellRare term=underline cterm=underline
 highlight clear SpellLocal
 highlight SpellLocal term=underline cterm=underline
+highlight Pmenu ctermbg=black ctermfg=white
 
-"-------------------------------------------------------------------------------- 
-"Status Stuff
-"-------------------------------------------------------------------------------- 
-set statusline=
-set statusline+=\ %F\ %M\ %Y\ %R
-set statusline+=%=
-set statusline+=\ ascii:\ %b\ hex:\ 0x%B\ row:\ %l\ col:\ %c\ percent:\ %p%%
-set laststatus=2
+" Customizations to plugins
+let g:airline_powerline_fonts = 0
+let g:airline_theme = "deus"
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_detect_modified = 1
+let g:ale_completion_enabled = 1
+let g:ale_disable_lsp = 1
+let g:ale_linters = {
+\ 'bash': [],
+\ 'sh': [],
+\ 'c': [],
+\ 'python': [],
+\}
+
+hi Comment ctermfg=80
 
 
-"-------------------------------------------------------------------------------- 
-"Plugin Stuff
-"-------------------------------------------------------------------------------- 
-call plug#begin()
-
-"Plug 'ervandew/supertab'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'embark-theme/vim', {'as': 'embark', 'branch' : 'main' }
-let g:coc_global_extensions = ['coc-clangd']
-let g:embark_terminal_italics = 1
-
-call plug#end()
-"autocmd BufEnter * silent! call CocActionAsync('doHover')
-
-set termguicolors
-set background=dark
-colorscheme embark
-hi StatusLine guifg=#f5428d 
-hi StatusLineNC guifg=DarkGrey

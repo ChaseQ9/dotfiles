@@ -20,7 +20,7 @@ set number relativenumber
 syntax on
 set autoindent
 set backspace=indent,eol,start
-set formatoptions-=t
+" set formatoptions-=t
 set ruler
 set tabstop=8
 set showcmd
@@ -59,7 +59,6 @@ augroup filetype_html
     autocmd BufNewFile,BufRead *.html :normal gg=G
 augroup END
 
-
 set spelllang=en
 highlight clear SpellBad
 highlight SpellBad term=standout cterm=underline ctermfg=red
@@ -70,6 +69,17 @@ highlight SpellRare term=underline cterm=underline
 highlight clear SpellLocal
 highlight SpellLocal term=underline cterm=underline
 highlight Pmenu ctermbg=black ctermfg=white
+
+" Disable Coc diagnostic highlighting 
+hi CocErrorHighlight cterm=NONE gui=NONE
+hi CocWarningHighlight cterm=NONE gui=NONE
+hi CocInfoHighlight cterm=NONE gui=NONE
+hi CocHintHighlight cterm=NONE gui=NONE
+
+hi CocErrorLine cterm=NONE gui=NONE
+hi CocWarningLine cterm=NONE gui=NONE
+hi CocInfoLine cterm=NONE gui=NONE
+hi CocHintLine cterm=NONE gui=NONE
 
 " Customizations to plugins
 let g:airline_powerline_fonts = 0

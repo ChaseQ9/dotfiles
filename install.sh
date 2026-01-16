@@ -32,6 +32,7 @@ main () {
   read-conf
   iterate-files
   echo "${conf["FILES"]}" 
+  vim +'PlugInstall --sync' +qa
   cleanup 
 
 }

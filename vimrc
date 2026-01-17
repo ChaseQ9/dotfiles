@@ -20,7 +20,9 @@ set number relativenumber
 syntax on
 set autoindent
 set backspace=indent,eol,start
-" set formatoptions-=t
+set ignorecase
+set smartcase
+set formatoptions-=t
 set ruler
 set tabstop=8
 set showcmd
@@ -41,7 +43,7 @@ inoremap <S-Tab> <C-d>
 nnoremap . gt
 nnoremap , gT
 nnoremap <CR> :noh<CR><CR>
-
+inoremap {<CR> {<CR>}<Esc>ko
 " The following remap is used to open up VIMRC file
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 " The following remap is used to source the VIMRC file

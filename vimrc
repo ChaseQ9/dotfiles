@@ -83,6 +83,20 @@ hi CocWarningLine cterm=NONE gui=NONE
 hi CocInfoLine cterm=NONE gui=NONE
 hi CocHintLine cterm=NONE gui=NONE
 
+highlight CocMenuSel ctermbg=238 guibg=#444444
+inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
+inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
+
 " Customizations to plugins
 let g:airline_powerline_fonts = 0
 let g:airline_theme = "deus"

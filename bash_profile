@@ -6,11 +6,11 @@ if [[ -f ~/.bashrc ]]; then
 fi
 
 if [[ -f ~/.bash_aliases ]]; then
-    source ~/.bash_aliases
+	source ~/.bash_aliases
 fi 
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-    PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games 
+    PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 elif [[ "$OSTYPE" == "darwin" ]]; then
     # Default Mac Path
     PATH=/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin  

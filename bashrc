@@ -1,4 +1,6 @@
-
+if [[ -f "~/.bash_profile" ]]; then
+	. "~/.bash_profile"
+fi
 
 
 bandit () {
@@ -20,4 +22,4 @@ export LSCOLORS=FaDxcxgxbxegedabagacad
 
 #Changing PS1 Value
 export PS1='\[\e[38;5;208m\]\u@\h:\w\n>\[\e[0m\] '
-
+export TERM=xterm-256color

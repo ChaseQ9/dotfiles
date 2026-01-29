@@ -111,6 +111,6 @@ let g:ale_linters = {
 \ 'python': [],
 \}
 
-hi Comment ctermfg=80
+hi Comment ctermfg=164
 
 

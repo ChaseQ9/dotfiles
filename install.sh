@@ -20,9 +20,16 @@ read-conf () {
 # This function also takes into consideration the exclude files
 iterate-files () {
   for file in ${conf["FILES"]}; do
-    echo "creating a symlink to $file on file ~/.$file"
-    rm "$HOME/.$file"
-    ln -s "$PWD/$file" "$HOME/.$file"
+    # -e because these files may be symlinks already, -f only checks for regular
+    # files
+    if [[ -e "$HOME/.$file" ]]; then
+	echo "File exists, creating a symlink to $file on file ~/.$file"
+    	rm "$HOME/.$file"
+    	ln -s "$PWD/$file" "$HOME/.$file"
+    else 
+   	"File does not exist, skipping..."
+	continue
+    fi 
   done
 }
 
@@ -32,7 +39,7 @@ main () {
   read-conf
   iterate-files
   echo "${conf["FILES"]}" 
-  vim +'PlugInstall --sync' +qa
+  # vim +'PlugInstall --sync' +qa
   cleanup 
 
 }

@@ -7,14 +7,14 @@
 
 # Check if the bashrc file exists
 # -e due to file possibly being a symlink and not a 'regular' file
-if [[ -e ~/.bashrc ]]; then 
-	source ~/.bashrc
+if [[ -e "$HOME/.bashrc" ]]; then 
+	source "$HOME/.bashrc"
 fi
 
 # Check if bash_aliases file exists
 # -e due to file possibly being a symlink and not a 'regular' file
-if [[ -e ~/.bash_aliases ]]; then
-	source ~/.bash_aliases
+if [[ -e "$HOME/.bash_aliases" ]]; then
+	source "$HOME/.bash_aliases"
 fi 
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then

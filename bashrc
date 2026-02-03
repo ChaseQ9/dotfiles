@@ -1,3 +1,7 @@
+# If not running interactively
+[[ $- != *i* ]] && return
+
+
 set -o vi
 
 if [[ -f ~/.bash_aliases ]]; then

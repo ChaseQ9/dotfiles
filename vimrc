@@ -7,13 +7,18 @@
 "--------------------------------------------------------------------------------
 "Plugin Stuff
 "--------------------------------------------------------------------------------
-call plug#begin()
+" Sourced from google, to check whether Plug is installed
+if empty(globpath(&rtp, 'autoload/plug.vim'))
+    " vim-plug is not installed, so install it
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    source ~/.vimrc " Reload the config after installation
+endif
 
+call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'dense-analysis/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
 call plug#end()
 
 set number relativenumber

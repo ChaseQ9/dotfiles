@@ -27,7 +27,7 @@ iterate-files () {
     	rm "$HOME/.$file"
     	ln -s "$PWD/$file" "$HOME/.$file"
     else 
-   	"File does not exist, skipping..."
+    	echo "File does not exist, skipping..."
 	continue
     fi 
   done
@@ -39,7 +39,7 @@ main () {
   read-conf
   iterate-files
   echo "${conf["FILES"]}" 
-  # vim +'PlugInstall --sync' +qa
+  vim +'PlugInstall --sync' +qa
   cleanup 
 
 }

@@ -1,12 +1,37 @@
-# If not running interactively
-[[ $- != *i* ]] && return
+# Author: Chase Quigley
+# File: bashrc
+# Revised: 02.03.2026
 
+# If not running interactively
+[[ -n $PS1 ]] || return
 
 set -o vi
+# Shell Options
+shopt -s cdspell
+shopt -s checkwinsize
+
+# Bash Version >= 4
+shopt -s autocd   2>/dev/null || true
+shopt -s dirspell 2>/dev/null || true
 
 if [[ -f ~/.bash_aliases ]]; then
 	. ~/.bash_aliases
 fi
+
+# Support colors in less - Sourced from https://github.com/bahamas10/dotfiles/blob/master/bashrc
+export LESS_TERMCAP_mb=$(tput bold; tput setaf 1)
+export LESS_TERMCAP_md=$(tput bold; tput setaf 1)
+export LESS_TERMCAP_me=$(tput sgr0)
+export LESS_TERMCAP_se=$(tput sgr0)
+export LESS_TERMCAP_so=$(tput bold; tput setaf 3; tput setab 4)
+export LESS_TERMCAP_ue=$(tput sgr0)
+export LESS_TERMCAP_us=$(tput smul; tput bold; tput setaf 2)
+export LESS_TERMCAP_mr=$(tput rev)
+export LESS_TERMCAP_mh=$(tput dim)
+export LESS_TERMCAP_ZN=$(tput ssubm)
+export LESS_TERMCAP_ZV=$(tput rsubm)
+export LESS_TERMCAP_ZO=$(tput ssupm)
+export LESS_TERMCAP_ZW=$(tput rsupm)
 
 __PS1() {
 	EXIT_STATUS=$?

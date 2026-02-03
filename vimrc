@@ -24,7 +24,7 @@ set ignorecase
 set smartcase
 set formatoptions-=t
 set ruler
-set tabstop=8
+set tabstop=4
 set showcmd
 set title
 set wildmode=longest,list,full

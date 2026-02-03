@@ -1,4 +1,7 @@
-# Chase Quigley - .bash_aliases file
+# Author: Chase Quigley 
+# File: bash_aliases
+# Revised: 02.02.2026
+
 # Aliases
 alias q="exit"
 alias c="clear"
@@ -10,4 +13,3 @@ alias ls="ls --color=auto"
 alias ..="echo cd ..; cd .."
 alias bat="batcat"
 
-#School Specific Helpful items 

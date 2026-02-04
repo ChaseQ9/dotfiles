@@ -17,13 +17,11 @@ if [[ -e "$HOME/.bash_aliases" ]]; then
 	source "$HOME/.bash_aliases"
 fi 
 
-OS_TYPE=$(uname)
-echo "$OS_TYPE"
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
     # Set the base PATH for the system, this is the bare minimum without any
     # changes
     PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
-elif [[ $OS_TYPE == "Darwin" ]]; then
+elif [[ "$OSTYPE" == *darwin* ]]; then
     # Set the base PATH for the system, this is the bare minimum without any
     # changes
     PATH=/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin 

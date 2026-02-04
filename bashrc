@@ -20,6 +20,8 @@ if [[ -f ~/.bash_aliases ]]; then
 	. ~/.bash_aliases
 fi
 
+bind TAB:menu-complete
+
 # Set vim as the default for editing and viewing
 export EDITOR='vim'
 export VISUAL='vim'

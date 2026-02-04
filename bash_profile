@@ -17,17 +17,21 @@ if [[ -e "$HOME/.bash_aliases" ]]; then
 	source "$HOME/.bash_aliases"
 fi 
 
+OS_TYPE=$(uname)
+echo "$OS_TYPE"
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
     # Set the base PATH for the system, this is the bare minimum without any
     # changes
     PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
-elif [[ "$OSTYPE" == "darwin" ]]; then
+elif [[ $OS_TYPE == "Darwin" ]]; then
     # Set the base PATH for the system, this is the bare minimum without any
     # changes
-    PATH=/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin  
+    PATH=/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin 
 fi
 # export PATH=/Users/chasequigley/java_bin:/Library/Frameworks/Python.framework/Versions/3.10/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+true

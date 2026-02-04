@@ -24,6 +24,7 @@ call plug#end()
 set number relativenumber
 syntax on
 set autoindent
+set shiftwidth=4
 set backspace=indent,eol,start
 set ignorecase
 set smartcase

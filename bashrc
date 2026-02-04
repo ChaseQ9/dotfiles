@@ -5,6 +5,7 @@
 # If not running interactively
 [[ -n $PS1 ]] || return
 
+
 # Capture the exit status of the last command
 set -o vi
 
@@ -45,10 +46,11 @@ export LESS_TERMCAP_ZN=$(tput ssubm)
 export LESS_TERMCAP_ZV=$(tput rsubm)
 export LESS_TERMCAP_ZO=$(tput ssupm)
 export LESS_TERMCAP_ZW=$(tput rsupm)
+export GROFF_NO_SGR=1
 
 __prompt_command() {
 	# capture exit status
-    local exit_status=$?
+    local exit_status=$1
 	# capture current working git branch (if applicable)
     local git_branch
     git_branch=$(git branch --show-current 2>/dev/null)
@@ -75,7 +77,10 @@ __prompt_command() {
     PS1="$ps1"
 }
 
-PROMPT_COMMAND="__prompt_command${PROMPT_COMMAND:+;$PROMPT_COMMAND}"
+PROMPT_COMMAND='__prompt_command $?'
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# To ensure we exit cleanly from sourcing bashrc
+true

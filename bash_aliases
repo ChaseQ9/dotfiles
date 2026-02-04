@@ -13,3 +13,8 @@ alias ls="ls -p --color=auto"
 alias ..="echo cd ..; cd .."
 alias bat="batcat"
 
+# Github Related Aliases
+alias ga="git add ."
+alias gc="git commit -m"
+alias gp="git push"
+alias gu="ga;gc 'basic update';gp"

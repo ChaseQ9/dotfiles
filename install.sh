@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 declare -A conf
 CONFIG_FILE="$PWD/dotfiles.conf"
 OLDIFS="$IFS"
@@ -28,7 +29,7 @@ iterate-files () {
     	ln -s "$PWD/$file" "$HOME/.$file"
     else 
     	echo "File does not exist, skipping..."
-	continue
+		continue
     fi 
   done
 }

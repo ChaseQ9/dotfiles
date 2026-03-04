@@ -5,8 +5,6 @@
 # If not running interactively
 [[ -n $PS1 ]] || return
 
-
-# Capture the exit status of the last command
 set -o vi
 
 # Shell Options

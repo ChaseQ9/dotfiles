@@ -24,6 +24,12 @@ call plug#end()
 set number relativenumber
 syntax on
 set autoindent
+set scrolloff=1
+set sidescroll=1
+set sidescrolloff=2
+set formatoptions+=j
+set ttimeout
+set ttimeoutlen=100
 set shiftwidth=4
 set backspace=indent,eol,start
 set ignorecase

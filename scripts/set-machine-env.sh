@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Sets the appropriate environment based on the machine we are running on 
 #
+PATH=
 
 usage() {
 	printf "[USAGE]\n "

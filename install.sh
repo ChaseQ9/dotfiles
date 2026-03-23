@@ -24,7 +24,7 @@ iterate-files () {
     # -e because these files may be symlinks already, -f only checks for regular
     # files
     if [[ -e "$HOME/.$file" ]]; then
-	echo "File exists, creating a symlink to $file on file ~/.$file"
+		echo "File exists, creating a symlink to $file on file ~/.$file"
     	rm "$HOME/.$file"
     	ln -s "$PWD/$file" "$HOME/.$file"
     else 

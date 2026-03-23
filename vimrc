@@ -62,6 +62,7 @@ nnoremap H 0
 nnoremap L $
 
 " Automatic commands ran
+filetype plugin indent on 
 augroup filetype_html
     autocmd!
     autocmd BufNewFile,BufRead *.html :normal gg=G

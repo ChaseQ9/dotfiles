@@ -46,13 +46,16 @@ append-cronjob() {
 # Entry function, process the main logic loop of the code
 main () {
 	echo "Install Script Running..."
+	~/dotfiles/scripts/set-machine-env.sh
+
 	read-conf
 	iterate-files
 	vim +'PlugInstall --sync' +qa
 
 	read -p "Install a cronjob to sync this repo? (y/n): " set_cronjob
 	if [[ $set_cronjob == "y" ]]; then
-	  append-cronjob
+		echo "Installing cronjob into $USER's crontab"	
+		append-cronjob
 	fi
 
 	cleanup 

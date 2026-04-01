@@ -13,10 +13,34 @@ alias ls="ls -p --color=auto"
 alias ..="echo cd ..; cd .."
 alias bat="batcat"
 
+# Typos
+alias ivm="vim"
+alias vmi="vim"
+alias chomd="chmod"
+alias chwon="chown"
+
 # Github Related Aliases
 alias ga="git add ."
 alias gc="git commit -m"
 alias gp="git push"
 alias gu="ga;gc 'basic update';gp"
 
+# System Specific
+if [[ ! -z $DOTFILES_SYSTEM ]]; then
+	case $DOTFILES_SYSTEM in
+		*cachy*)
+			echo "On the Cachy System!" 
+			alias open="xdg-open"
+			;;
+		*Ubuntu*)
+			echo "On the Ubuntu System!"
+			;;
+		*MacBook*)
+			echo "On the Macbook!"
+			;;
+		*)
+			echo "Default Case, I don't know this System!"
+			;;
+	esac
+fi
 

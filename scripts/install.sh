@@ -52,7 +52,7 @@ main () {
 	iterate-files
 	vim +'PlugInstall --sync' +qa
 
-	read -p "Install a cronjob to sync this repo? (y/n): " set_cronjob
+	read -t 10 -p "Install a cronjob to sync this repo? (y/n): " set_cronjob
 	if [[ $set_cronjob == "y" ]]; then
 		echo "Installing cronjob into $USER's crontab"	
 		append-cronjob

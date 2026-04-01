@@ -5,7 +5,7 @@ sync-files() {
    if [[ $(git -C $HOME/dotfiles pull) == *"Already up to date"* ]]; then
        echo "Up to date"
    else
-       $HOME/dotfiles/install.sh
+       ~/dotfiles/scripts/install.sh
        echo "Files installed"
    fi
 

@@ -18,3 +18,5 @@ alias ga="git add ."
 alias gc="git commit -m"
 alias gp="git push"
 alias gu="ga;gc 'basic update';gp"
+
+

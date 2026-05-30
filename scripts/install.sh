@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 declare -A conf
-CONFIG_FILE="~/dotfiles/dotfiles.conf"
+CONFIG_FILE="$HOME/dotfiles/dotfiles.conf"
+DOTFILES="$HOME/dotfiles"
 OLDIFS="$IFS"
 IFS=","
 
@@ -14,11 +15,10 @@ read-conf () {
 	# Has the example value "FILES=bash1,bash2,bash3"
     conf["${line%%=*}"]="${line#*=}"
   done
-  
 }
 # Here we will need to go through each file and do the following:
 # 1. Create a symlink to this file in the home directory with the notation ln -s $file .$file | done
-# 2. ... 
+# 2. ...
 #
 # Function below is used to iterate through each dotfile within the 'conf' array
 # This function also takes into consideration the exclude files
@@ -28,12 +28,12 @@ iterate-files () {
     # files
     if [[ -e "$HOME/.$file" ]]; then
 		echo "File exists, creating a symlink to $file on file ~/.$file"
-    	rm "$HOME/.$file"
-    	ln -s "$PWD/$file" "$HOME/.$file"
-    else 
-    	echo "File does not exist, skipping..."
+		rm "$HOME/.$file"
+		ln -s "$DOTFILES/$file" "$HOME/.$file"
+    else
+		echo "File does not exist, skipping..."
 		continue
-    fi 
+	fi
   done
 }
 
@@ -54,11 +54,11 @@ main () {
 
 	read -t 10 -p "Install a cronjob to sync this repo? (y/n): " set_cronjob
 	if [[ $set_cronjob == "y" ]]; then
-		echo "Installing cronjob into $USER's crontab"	
+		echo "Installing cronjob into $USER's crontab"
 		append-cronjob
 	fi
 
-	cleanup 
+	cleanup
 
 }
 
@@ -66,4 +66,4 @@ cleanup () {
     IFS=$OLDIFS
 }
 
-main 
+main

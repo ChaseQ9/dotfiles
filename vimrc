@@ -51,6 +51,9 @@ set spell
 set textwidth=80
 set background=light
 
+colorscheme default
+hi! Comment ctermfg=gray
+
 let mapleader="-"
 let maplocalleader="."
 
@@ -100,6 +103,7 @@ hi CocWarningLine cterm=NONE gui=NONE
 hi CocInfoLine cterm=NONE gui=NONE
 hi CocHintLine cterm=NONE gui=NONE
 
+
 highlight CocMenuSel ctermbg=238 guibg=#444444
 inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 function! CheckBackspace() abort
@@ -134,8 +138,4 @@ let g:ale_fixers = {
 	\ 'html': ['prettier'],
 	\ 'css': ['stylelint'],
 \}
-
-" Test comment color
-hi Comment ctermfg=gray
-
 

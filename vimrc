@@ -130,9 +130,7 @@ let g:ale_linters = {
 \ 'sh': [],
 \ 'c': [],
 \ 'python': [],
-<<<<<<< HEAD
 \ 'rust': [],
-=======
 \ 'html': ['htmlhint'],
 \ 'css': ['stylehint'],
 \}
@@ -140,6 +138,5 @@ let g:ale_linters = {
 let g:ale_fixers = {
 	\ 'html': ['prettier'],
 	\ 'css': ['stylelint'],
->>>>>>> 5891d26aace1ee1496090eb30ab23130f1178c68
 \}
 

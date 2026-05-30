@@ -11,7 +11,6 @@ alias unix="ssh chaseq9@users.cs.umb.edu"
 alias grep='grep --color=auto'
 alias ls="ls -p --color=auto"
 alias ..="echo cd ..; cd .."
-alias bat="batcat"
 
 # Typos
 alias ivm="vim"

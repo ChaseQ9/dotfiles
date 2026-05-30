@@ -15,10 +15,13 @@ if empty(globpath(&rtp, 'autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
+Plug 'alvan/vim-closetag'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'dense-analysis/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'yuezk/vim-js'
+Plug 'maxmellon/vim-jsx-pretty'
 call plug#end()
 
 set number relativenumber
@@ -70,6 +73,7 @@ nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
 nnoremap H 0
 nnoremap L $
 
+filetype plugin on
 " Automatic commands ran
 filetype plugin indent on 
 augroup filetype_html
@@ -126,6 +130,16 @@ let g:ale_linters = {
 \ 'sh': [],
 \ 'c': [],
 \ 'python': [],
+<<<<<<< HEAD
 \ 'rust': [],
+=======
+\ 'html': ['htmlhint'],
+\ 'css': ['stylehint'],
+\}
+
+let g:ale_fixers = {
+	\ 'html': ['prettier'],
+	\ 'css': ['stylelint'],
+>>>>>>> 5891d26aace1ee1496090eb30ab23130f1178c68
 \}
 

@@ -126,5 +126,6 @@ let g:ale_linters = {
 \ 'sh': [],
 \ 'c': [],
 \ 'python': [],
+\ 'rust': [],
 \}
 

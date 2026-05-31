@@ -5,8 +5,6 @@
 # If not running interactively
 [[ -n $PS1 ]] || return
 
-set -o vi
-
 # Shell Options
 shopt -s cdspell
 shopt -s checkwinsize

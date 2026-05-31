@@ -118,6 +118,18 @@ inoremap <silent><expr> <Tab>
 inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
 inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
 
+" Rust Completion
+" Trigger completion
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" : "\<Tab>"
+
+inoremap <expr><S-Tab>
+      \ pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" Accept completion
+inoremap <silent><expr> <CR>
+      \ pumvisible() ? coc#_select_confirm() : "\<CR>"
+
 " Customizations to plugins
 let g:airline_powerline_fonts = 0
 let g:airline_theme = "deus"

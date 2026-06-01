@@ -46,7 +46,7 @@ append-cronjob() {
 # Entry function, process the main logic loop of the code
 main () {
 	echo "Install Script Running..."
-	~/dotfiles/scripts/set-machine-env.sh
+	$DOTFILES/scripts/set-machine-env.sh
 
 	read-conf
 	iterate-files

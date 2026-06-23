@@ -21,6 +21,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'dense-analysis/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'yuezk/vim-js'
+Plug 'elzr/vim-json'
 Plug 'maxmellon/vim-jsx-pretty'
 call plug#end()
 
@@ -106,49 +107,31 @@ hi CocHintLine cterm=NONE gui=NONE
 
 highlight CocMenuSel ctermbg=238 guibg=#444444
 inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+
 function! CheckBackspace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1] =~# '\s'
 endfunction
 
 inoremap <silent><expr> <Tab>
       \ coc#pum#visible() ? coc#pum#next(1) :
       \ CheckBackspace() ? "\<Tab>" :
       \ coc#refresh()
-inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
-inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
 
-" Rust Completion
-" Trigger completion
-inoremap <silent><expr> <Tab>
-      \ pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab>
+      \ coc#pum#visible() ? coc#pum#prev(1) :
+      \ "\<C-h>"
 
-inoremap <expr><S-Tab>
-      \ pumvisible() ? "\<C-p>" : "\<C-h>"
-
-" Accept completion
 inoremap <silent><expr> <CR>
-      \ pumvisible() ? coc#_select_confirm() : "\<CR>"
+      \ coc#pum#visible() ?
+      \ coc#pum#confirm() :
+      \ "\<CR>"
 
 " Customizations to plugins
 let g:airline_powerline_fonts = 0
 let g:airline_theme = "deus"
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_detect_modified = 1
-let g:ale_completion_enabled = 1
+let g:ale_completion_enabled = 0
 let g:ale_disable_lsp = 1
-let g:ale_linters = {
-\ 'bash': [],
-\ 'sh': [],
-\ 'c': [],
-\ 'python': [],
-\ 'rust': [],
-\ 'html': ['htmlhint'],
-\ 'css': ['stylehint'],
-\}
-
-let g:ale_fixers = {
-	\ 'html': ['prettier'],
-	\ 'css': ['stylelint'],
-\}
 

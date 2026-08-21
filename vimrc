@@ -19,7 +19,6 @@ Plug 'alvan/vim-closetag'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'dense-analysis/ale'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'yuezk/vim-js'
 Plug 'elzr/vim-json'
 Plug 'maxmellon/vim-jsx-pretty'
@@ -109,39 +108,12 @@ highlight clear SpellLocal
 highlight SpellLocal term=underline cterm=underline
 highlight Pmenu ctermbg=black ctermfg=white
 
-" Disable Coc diagnostic highlighting 
-hi CocErrorHighlight cterm=NONE gui=NONE
-hi CocWarningHighlight cterm=NONE gui=NONE
-hi CocInfoHighlight cterm=NONE gui=NONE
-hi CocHintHighlight cterm=NONE gui=NONE
-
-hi CocErrorLine cterm=NONE gui=NONE
-hi CocWarningLine cterm=NONE gui=NONE
-hi CocInfoLine cterm=NONE gui=NONE
-hi CocHintLine cterm=NONE gui=NONE
-
-
-highlight CocMenuSel ctermbg=238 guibg=#444444
-inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 
 function! CheckBackspace() abort
     let col = col('.') - 1
     return !col || getline('.')[col - 1] =~# '\s'
 endfunction
 
-inoremap <silent><expr> <Tab>
-      \ coc#pum#visible() ? coc#pum#next(1) :
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
-
-inoremap <expr> <S-Tab>
-      \ coc#pum#visible() ? coc#pum#prev(1) :
-      \ "\<C-h>"
-
-inoremap <silent><expr> <CR>
-      \ coc#pum#visible() ?
-      \ coc#pum#confirm() :
-      \ "\<CR>"
 
 " Customizations to plugins
 let g:airline_powerline_fonts = 0

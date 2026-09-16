@@ -69,9 +69,16 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 " The following remaps are used to place quotes around a word (' or ")
 nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
 nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
-" Quality of life remaps
+
+" QUALITY OF LIFE REMAPS
+" Yank to system clipboard -- 5<leader>y to yank 5 lines 
+nnoremap <leader>y "+yy
+nnoremap <leader>p "+p
+
 nnoremap H 0
 nnoremap L $
+" Sanitize ip address in string ("0.0.0.0" becomes "0.0.0[.]0")
+nnoremap <leader>ip /\<\d\{1,3}\.\d\{1,3}\.\d\{1,3}\zs\./<CR>s[.]<ESC>
 
 filetype plugin on
 " Automatic commands ran
